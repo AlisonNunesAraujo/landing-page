@@ -37,7 +37,7 @@ const Services = [
 
 export default function Serviçes() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
+    loop: true,
     align: "start",
     slidesToScroll: 1,
     breakpoints: {
@@ -54,10 +54,10 @@ export default function Serviçes() {
     emblaApi?.scrollPrev();
   }
   return (
-    <section className="py-4 px-4 mb-5  bg-[#dbcecc]">
+    <section className="py-4 px-5   bg-[#dbcecc]">
       <h2 className="text-4xl font-bold px-5 mb-2.5">Serviços</h2>
 
-      <div className="relative">
+      <div className="relative ">
         <div className="overflow-hidden " ref={emblaRef}>
           <div className="flex">
             {Services.map((service, index) => (
@@ -88,14 +88,14 @@ export default function Serviçes() {
           rounded-full w-10 h-10 absolute -translate-y-1/2 -translate-x-1/2 top-1/2 left-1"
           onClick={scrollPrev}
         >
-          <ChevronLeft  />
+          <ChevronLeft />
         </button>
         <button
           className="bg-white shadow-lg flex items-center justify-center 
-          rounded-full w-10 h-10 absolute -translate-y-1/2 -translate-x-1/2 top-1/2 right-0"
+          rounded-full w-10 h-10 absolute -translate-y-1/2 -translate-x-1/2 top-1/2  right-0 left-full "
           onClick={scrollNext}
         >
-          <ChevronRight  />
+          <ChevronRight />
         </button>
       </div>
     </section>
