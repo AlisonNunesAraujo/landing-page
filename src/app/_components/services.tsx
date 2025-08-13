@@ -33,24 +33,6 @@ const Services = [
     duration: "2 horas",
     price: 350.0,
   },
-  {
-    title: "Banho e Tosa",
-    desc: "Serviço completo de higienização, incluindo banho com produtos adequados ao tipo de pelagem, secagem, escovação, corte de unhas e tosa higiênica ou estética. Proporciona bem-estar e saúde para a pele e pelos do seu animal.",
-    duration: "1 hora",
-    price: 80.0,
-  },
-  {
-    title: "Exames Laboratoriais",
-    desc: "Coleta e análise de amostras de sangue, urina e fezes para diagnóstico rápido e preciso de diversas doenças. Indicado tanto para check-ups preventivos quanto para investigação de sintomas apresentados pelo animal.",
-    duration: "45 minutos",
-    price: 150.0,
-  },
-  {
-    title: "Cirurgia de Castração",
-    desc: "Procedimento cirúrgico seguro e realizado com anestesia apropriada para cada animal, visando o controle populacional e prevenção de doenças reprodutivas. Inclui orientações pré e pós-operatórias para uma recuperação tranquila.",
-    duration: "2 horas",
-    price: 350.0,
-  },
 ];
 
 export default function Serviçes() {
@@ -65,16 +47,21 @@ export default function Serviçes() {
     },
   });
 
+  function scrollNext() {
+    emblaApi?.scrollNext();
+  }
+  function scrollPrev() {
+    emblaApi?.scrollPrev();
+  }
   return (
-    <section className="py-4 mb-5  bg-[#dbcecc]">
+    <section className="py-4 px-4 mb-5  bg-[#dbcecc]">
       <h2 className="text-4xl font-bold px-5 mb-2.5">Serviços</h2>
 
       <div className="relative">
         <div className="overflow-hidden " ref={emblaRef}>
-          <div className="flex" >
+          <div className="flex">
             {Services.map((service, index) => (
               <div
-              
                 key={index}
                 className="flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(100%/3)] px-3"
               >
@@ -85,8 +72,10 @@ export default function Serviçes() {
                       R$ {service.price.toFixed(2)}
                     </span>
                   </div>
-                  <p className="text-sm">{service.desc}</p>
-                  <div className="flex items-center gap-2">
+                  <p className="text-gray-400 text-sm select-none ">
+                    {service.desc}
+                  </p>
+                  <div className="flex items-center gap-2 border-t border-gray-700 mb-3 pt-2">
                     <span className="text-sm">{service.duration}</span>
                   </div>
                 </article>
@@ -94,6 +83,20 @@ export default function Serviçes() {
             ))}
           </div>
         </div>
+        <button
+          className="bg-white shadow-lg flex items-center justify-center 
+          rounded-full w-10 h-10 absolute -translate-y-1/2 -translate-x-1/2 top-1/2 left-1"
+          onClick={scrollPrev}
+        >
+          <ChevronLeft  />
+        </button>
+        <button
+          className="bg-white shadow-lg flex items-center justify-center 
+          rounded-full w-10 h-10 absolute -translate-y-1/2 -translate-x-1/2 top-1/2 right-0"
+          onClick={scrollNext}
+        >
+          <ChevronRight  />
+        </button>
       </div>
     </section>
   );
